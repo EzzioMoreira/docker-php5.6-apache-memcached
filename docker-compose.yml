@@ -1,6 +1,6 @@
 apache:
-    image: omnilink/php5.6
-    container_name: php5.6-teste
+    image: omnilink/php5.6:0.1
+    container_name: php5.6-lab
     ports:
       - "80:80"
       - "443:443"

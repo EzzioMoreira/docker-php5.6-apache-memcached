@@ -1,21 +1,14 @@
 # Dockerfile php5.6, apache, memcached and extension memcache
 
 ## Module install in images
-* gd
-* iconv
-* mcrypt
-* intl
-* mysql
-* mysqli
-* pdo_mysql
-* zip
-* mbstring
-* mod_rewrite
+* mysqli 
+* mysql 
+* pdo_mysql 
+* bcmath pdo
 
 ## External extension
 * Memcached
 * Mencache
-* Composer
 * OpenSSL
 * Imagick
 

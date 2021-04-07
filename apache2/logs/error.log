@@ -1,20 +1,22 @@
-[Tue Apr 06 22:19:04.623801 2021] [ssl:warn] [pid 1] AH01882: Init: this version of mod_ssl was compiled against a newer library (OpenSSL 1.0.2s  28 May 2019, version currently loaded is OpenSSL 1.0.2q  20 Nov 2018) - may result in undefined or erroneous behavior
+[Wed Apr 07 08:15:45.017266 2021] [ssl:warn] [pid 1] AH01882: Init: this version of mod_ssl was compiled against a newer library (OpenSSL 1.0.2s  28 May 2019, version currently loaded is OpenSSL 1.0.2q  20 Nov 2018) - may result in undefined or erroneous behavior
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
-[Tue Apr 06 22:19:04.713756 2021] [ssl:warn] [pid 1] AH01882: Init: this version of mod_ssl was compiled against a newer library (OpenSSL 1.0.2s  28 May 2019, version currently loaded is OpenSSL 1.0.2q  20 Nov 2018) - may result in undefined or erroneous behavior
-[Tue Apr 06 22:19:04.718188 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) PHP/5.6.40 OpenSSL/1.0.2q configured -- resuming normal operations
-[Tue Apr 06 22:19:04.718284 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
-[Tue Apr 06 22:19:33.265835 2021] [autoindex:error] [pid 17] [client 172.17.0.1:42180] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
-[Tue Apr 06 22:20:08.521153 2021] [autoindex:error] [pid 18] [client 172.17.0.1:42178] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
-[Tue Apr 06 22:21:22.287248 2021] [autoindex:error] [pid 20] [client 172.17.0.1:42198] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
-[Tue Apr 06 22:22:11.105139 2021] [autoindex:error] [pid 18] [client 172.17.0.1:42258] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
-[Tue Apr 06 22:22:28.825288 2021] [:error] [pid 19] [client 172.17.0.1:42260] script '/var/www/html/index.php' not found or unable to stat
-[Tue Apr 06 22:24:34.817460 2021] [:error] [pid 21] [client 172.17.0.1:42274] script '/var/www/html/index.php' not found or unable to stat
-[Tue Apr 06 22:28:07.980688 2021] [:error] [pid 23] [client 172.17.0.1:42280] script '/var/www/html/index.php' not found or unable to stat
-[Tue Apr 06 22:28:09.060394 2021] [:error] [pid 23] [client 172.17.0.1:42280] script '/var/www/html/index.php' not found or unable to stat
-[Tue Apr 06 22:28:10.108380 2021] [:error] [pid 23] [client 172.17.0.1:42280] script '/var/www/html/index.php' not found or unable to stat
-[Tue Apr 06 22:28:13.953607 2021] [autoindex:error] [pid 23] [client 172.17.0.1:42280] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
-[Tue Apr 06 22:29:01.170020 2021] [autoindex:error] [pid 18] [client 172.17.0.1:42292] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
-[Tue Apr 06 22:29:02.209815 2021] [autoindex:error] [pid 18] [client 172.17.0.1:42292] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
-[Tue Apr 06 22:30:38.415040 2021] [autoindex:error] [pid 17] [client 172.17.0.1:42316] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
-[Tue Apr 06 22:30:39.464608 2021] [autoindex:error] [pid 17] [client 172.17.0.1:42316] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
-[Tue Apr 06 22:30:41.297070 2021] [autoindex:error] [pid 17] [client 172.17.0.1:42316] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Wed Apr 07 08:15:45.092512 2021] [ssl:warn] [pid 1] AH01882: Init: this version of mod_ssl was compiled against a newer library (OpenSSL 1.0.2s  28 May 2019, version currently loaded is OpenSSL 1.0.2q  20 Nov 2018) - may result in undefined or erroneous behavior
+[Wed Apr 07 08:15:45.100035 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) OpenSSL/1.0.2q configured -- resuming normal operations
+[Wed Apr 07 08:15:45.100122 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Wed Apr 07 08:17:35.500147 2021] [autoindex:error] [pid 22] [client 172.17.0.1:48950] AH01276: Cannot serve directory /var/www/html/gestor/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+apache2: symbol lookup error: /usr/local/lib/php/extensions/no-debug-non-zts-20131226/memcache.so: undefined symbol: mmc_queue_free
+apache2: symbol lookup error: /usr/local/lib/php/extensions/no-debug-non-zts-20131226/memcache.so: undefined symbol: mmc_queue_free
+apache2: symbol lookup error: /usr/local/lib/php/extensions/no-debug-non-zts-20131226/memcache.so: undefined symbol: mmc_queue_free
+apache2: symbol lookup error: /usr/local/lib/php/extensions/no-debug-non-zts-20131226/memcache.so: undefined symbol: mmc_queue_free
+apache2: symbol lookup error: /usr/local/lib/php/extensions/no-debug-non-zts-20131226/memcache.so: undefined symbol: mmc_queue_free
+apache2: symbol lookup error: /usr/local/lib/php/extensions/no-debug-non-zts-20131226/memcache.so: undefined symbol: mmc_queue_free
+apache2: symbol lookup error: /usr/local/lib/php/extensions/no-debug-non-zts-20131226/memcache.so: undefined symbol: mmc_queue_free
+apache2: symbol lookup error: /usr/local/lib/php/extensions/no-debug-non-zts-20131226/memcache.so: undefined symbol: mmc_queue_free
+apache2: symbol lookup error: /usr/local/lib/php/extensions/no-debug-non-zts-20131226/memcache.so: undefined symbol: mmc_queue_free
+[Wed Apr 07 08:49:09.542689 2021] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+[Wed Apr 07 17:00:57.688398 2021] [ssl:warn] [pid 1] AH01882: Init: this version of mod_ssl was compiled against a newer library (OpenSSL 1.0.2s  28 May 2019, version currently loaded is OpenSSL 1.0.2q  20 Nov 2018) - may result in undefined or erroneous behavior
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+[Wed Apr 07 17:00:58.721853 2021] [ssl:warn] [pid 1] AH01882: Init: this version of mod_ssl was compiled against a newer library (OpenSSL 1.0.2s  28 May 2019, version currently loaded is OpenSSL 1.0.2q  20 Nov 2018) - may result in undefined or erroneous behavior
+[Wed Apr 07 17:00:58.726527 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) OpenSSL/1.0.2q configured -- resuming normal operations
+[Wed Apr 07 17:00:58.726598 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Wed Apr 07 17:19:36.895566 2021] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
