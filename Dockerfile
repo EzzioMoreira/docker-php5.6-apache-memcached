@@ -1,19 +1,19 @@
 FROM php:5.6-apache
-#MAINTAINER porchn
 
 ENV TZ=America/Sao_Paulo
-# Set Server timezone.
+# Seta timezone.
 RUN echo $TZ > /etc/timezone \
     && dpkg-reconfigure -f noninteractive tzdata \
     && echo date.timezone = $TZ > /usr/local/etc/php/conf.d/docker-php-ext-timezone.ini
 
-RUN mkdir -p /etc/apache2/ssl
+RUN mkdir -p /etc/apache2/ssl_omni
 
-# Defaul config php.ini
+# Configuração padrão php.ini and index.php.
 COPY ./config/php.ini /usr/local/etc/php/
 COPY ./index.php /var/www/html/
+COPY ./index.html /var/www/html/
 
-# RUN apt-get -y update && apt-get -y upgrade
+# Executa apt update, upgrade e install.
 RUN apt-get -y update \
     && apt-get install -y --no-install-recommends \
     libmemcached11 \
@@ -33,33 +33,34 @@ RUN apt-get -y update \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
-
-# Config Extension 
+# Configura extensão.
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib \
     && docker-php-ext-configure imap --with-imap-ssl --with-kerberos \
     && docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr
 
-# Install Extension mysqli mysql mbstring opcache pdo_mysql gd mcrypt zip imap bcmath soap pdo
+# Instala extensões padrões.
 RUN docker-php-ext-install mysqli mysql mbstring opcache pdo_mysql gd mcrypt zip imap soap pdo pdo_odbc
 
-# Enable Apache mod_rewrite
+# Habilita headers apache.
 RUN a2enmod rewrite ssl headers
 
-# Memcached 2.2.0
+# Instala Imagick.
+RUN pecl install imagick \
+    && docker-php-ext-enable imagick
+
+# Instala Memcached 2.2.0.
 RUN pecl install memcached-2.2.0 \
     && docker-php-ext-enable memcached
 
-# Memcache 3.0.8
+# Instala Memcache 3.0.8.
 RUN pecl install memcache-3.0.8 \
     && docker-php-ext-enable memcache
-
-# Imagick
-RUN pecl install imagick \
-    && docker-php-ext-enable imagick
-    
+ 
 RUN chown -R www-data:www-data /var/www
-# Create Volume
-VOLUME ['/etc/apache2/sites-enabled','/var/www','/var/log/apache2']
 
+# Cria volumes.
+VOLUME ["/etc/apache2","/var/www","/var/log/apache2"]
+
+# Expõe portas
 EXPOSE 80
 EXPOSE 443

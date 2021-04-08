@@ -1,13 +1,13 @@
 apache:
-    image: omnilink/php5.6
-    container_name: php5.6-teste
+    image: omnilink/php5.6:1.1
+    container_name: ezzio
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./apache2/conf:/etc/apache2/sites-enabled
-      - ./apache2/www:/var/www
-      - ./apache2/logs:/var/log/apache2
+      - ./apache2:/etc/apache2/sites-enabled
+      - ./www:/var/www
+      - ./logs:/var/log/apache2
     environment:
       - TZ=America/Fortaleza
     restart: always
