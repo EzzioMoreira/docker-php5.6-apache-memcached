@@ -1,22 +1,38 @@
-# Dockerfile php5.6, apache, memcached and extension memcache
+# Dockerfile php5.6 com modulos/extensões
+## Reguisitos
+- Docker
+- Docker Compose
 
-## Module install in images
+## Criando imagem
+```
+docker build -t nome/php.5.6:1.0
+docker image ls
+```
+## Criando container
+```
+docker-compose up -d
+docker-compose ps
+```
+## Acessando aplicação
+- http://localhost/index.php
+
+## Module instalados
 * mysqli 
 * mysql 
 * pdo_mysql 
 * bcmath pdo
 
-## External extension
+## Modulos adicionais
 * Memcached
 * Mencache
 * OpenSSL
 * Imagick
 
-## Volume
+## Volumes
 * /var/www
 * /var/log/apache2
-* /etc/apache2/sites-enabled
+* /etc/apache2
 
-## Port
+## Portas
 * 80
 * 443

@@ -1,2 +1,0 @@
-#!/bin/bash
-echo '#!/bin/bash' > restore.sh && aws --output text s3api list-object-versions --bucket files-shownet | grep -E "contas*" | grep -E "^DELETEMARKERS" | grep -a "2021-04-06*" | awk '{FS = "[\t]+"; print "aws s3api delete-object --bucket files-shownet --key \42"$3"\42 --version-id "$5";"}' >> restore.sh && . restore.sh
