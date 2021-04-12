@@ -1,13 +1,20 @@
-apache:
-    image: omnilink/php5.6:1.1
-    container_name: ezzio
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./apache2:/etc/apache2/sites-enabled
-      - ./www:/var/www
-      - ./logs:/var/log/apache2
-    environment:
+version: '3'
+services: 
+ apache:
+     image: omnilink/php5.6:1.1
+     container_name: ezzio
+     ports:
+       - "80:80"
+       - "443:443"
+     volumes:
+       - ./apache2:/etc/apache2/sites-enabled
+       - ./www:/var/www/html
+       - ./logs:/var/log/apache2
+     environment:
       - TZ=America/Fortaleza
-    restart: always
+     restart: always
+     logging: 
+      driver: "json-file"
+      options: 
+        max-size: "5m"
+        max-file: "2"
