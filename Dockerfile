@@ -10,8 +10,7 @@ RUN mkdir -p /etc/apache2/ssl_omni
 
 # Configuração padrão php.ini and index.php.
 COPY ./config/php.ini /usr/local/etc/php/
-COPY ./index.php /var/www/html/
-COPY ./index.html /var/www/html/
+COPY ./config/conf.d/* /usr/local/etc/php/conf.d/
 
 # Executa apt update, upgrade e install.
 RUN apt-get -y update \
@@ -59,7 +58,7 @@ RUN pecl install memcache-3.0.8 \
 RUN chown -R www-data:www-data /var/www
 
 # Cria volumes.
-VOLUME ["/etc/apache2","/var/www","/var/log/apache2"]
+VOLUME ["/etc/apache2","/var/www/html","/var/log/apache2"]
 
 # Expõe portas
 EXPOSE 80
