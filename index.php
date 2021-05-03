@@ -1,1 +1,4 @@
-<?php phpinfo(); ?>
+<?php
+echo 'Ezzio Moreira';
+phpinfo();
+?>

@@ -8,10 +8,6 @@ RUN echo $TZ > /etc/timezone \
 
 RUN mkdir -p /etc/apache2/ssl_omni
 
-# Configuração padrão php.ini and index.php.
-COPY ./config/php.ini /usr/local/etc/php/
-COPY ./config/conf.d/* /usr/local/etc/php/conf.d/
-
 # Executa apt update, upgrade e install.
 RUN apt-get -y update \
     && apt-get install -y --no-install-recommends \
@@ -58,7 +54,7 @@ RUN pecl install memcache-3.0.8 \
 RUN chown -R www-data:www-data /var/www
 
 # Cria volumes.
-VOLUME ["/etc/apache2","/var/www/html","/var/log/apache2"]
+VOLUME ["/etc/apache2","/var/www/html","/var/log/"]
 
 # Expõe portas
 EXPOSE 80
