@@ -6,7 +6,17 @@ RUN echo $TZ > /etc/timezone \
     && dpkg-reconfigure -f noninteractive tzdata \
     && echo date.timezone = $TZ > /usr/local/etc/php/conf.d/docker-php-ext-timezone.ini
 
-RUN mkdir -p /etc/apache2/ssl_omni
+# Use the default production configuration
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+# ENV Apache
+#ENV APACHE_DOCUMENT_ROOT /var/www/html/gestor
+#RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+#RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# Copia app 
+#COPY ./config/php.ini /usr/local/etc/php/
+#COPY index.php /var/www/html
 
 # Executa apt update, upgrade e install.
 RUN apt-get -y update \
@@ -25,36 +35,33 @@ RUN apt-get -y update \
     libkrb5-dev \
     libmcrypt-dev \
     unixodbc-dev \
+    zlib1g-dev \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
-# Configura extensão.
+# Configura Extensões 
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib \
     && docker-php-ext-configure imap --with-imap-ssl --with-kerberos \
     && docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr
 
-# Instala extensões padrões.
-RUN docker-php-ext-install mysqli mysql mbstring opcache pdo_mysql gd mcrypt zip imap soap pdo pdo_odbc
+# Install Extensões
+RUN docker-php-ext-install mbstring soap pdo pdo_odbc opcache  mysqli mysql pdo_mysql gd mcrypt zip imap 
 
-# Habilita headers apache.
+# Habilita mod_rewrite Apache
 RUN a2enmod rewrite ssl headers
 
-# Instala Imagick.
-RUN pecl install imagick \
-    && docker-php-ext-enable imagick
-
-# Instala Memcached 2.2.0.
-RUN pecl install memcached-2.2.0 \
+# Install Extensões memcached 2.2
+RUN CFLAGS="-fgnu89-inline" pecl install memcached-2.2.0 \
     && docker-php-ext-enable memcached
 
 # Instala Memcache 3.0.8.
-RUN pecl install memcache-3.0.8 \
+RUN CFLAGS="-fgnu89-inline" pecl install memcache-3.0.8 \
     && docker-php-ext-enable memcache
- 
-RUN chown -R www-data:www-data /var/www
+
+RUN chown -R www-data:www-data /var/www/html
 
 # Cria volumes.
-VOLUME ["/etc/apache2","/var/www/html","/var/log/"]
+VOLUME ["/var/www/html","/var/log/"]
 
 # Expõe portas
 EXPOSE 80
