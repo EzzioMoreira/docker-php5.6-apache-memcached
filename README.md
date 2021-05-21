@@ -16,22 +16,13 @@ docker-compose ps
 ## Acessando aplicação
 - http://localhost/index.php
 
-## Module instalados
-* mysqli 
-* mysql 
-* pdo_mysql 
-* bcmath pdo
-
 ## Modulos adicionais
 * Memcached
 * Mencache
-* OpenSSL
-* Imagick
 
 ## Volumes
 * /var/www
 * /var/log/apache2
-* /etc/apache2
 
 ## Portas
 * 80
