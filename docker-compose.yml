@@ -1,5 +1,5 @@
 version: '3'
-services: 
+services:
  apache:
      image: omnilink/php5.6:1.1
      container_name: ezzio
@@ -7,7 +7,6 @@ services:
        - "80:80"
        - "443:443"
      volumes:
-       - ./apache2:/etc/apache2/sites-enabled
        - ./www:/var/www/html
        - ./logs:/var/log/apache2
      environment:
